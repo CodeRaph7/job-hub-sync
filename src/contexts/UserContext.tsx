@@ -2,7 +2,7 @@
 import React, { createContext, useContext, useState } from 'react';
 import { User, UserRole } from '@/types/hiring';
 import { currentUser } from '@/data/mockData';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 interface UserContextType {
   user: User;

@@ -7,7 +7,7 @@ import {
   companyHireRequests
 } from '@/data/mockData';
 import { Application, ApplicationStatus, HireRequest } from '@/types/hiring';
-import { toast } from '@/components/ui/sonner';
+import { toast } from 'sonner';
 
 interface HiringContextType {
   jobSeekerApps: Application[];
