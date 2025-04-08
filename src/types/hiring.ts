@@ -9,6 +9,39 @@ export interface User {
   email: string;
   avatar: string;
   role: UserRole;
+  cv?: CV;
+}
+
+export interface CV {
+  summary: string;
+  skills: string[];
+  experience: Experience[];
+  education: Education[];
+  languages: Language[];
+}
+
+export interface Experience {
+  title: string;
+  company: string;
+  location: string;
+  startDate: string;
+  endDate?: string;
+  current?: boolean;
+  description: string;
+}
+
+export interface Education {
+  degree: string;
+  institution: string;
+  location: string;
+  startYear: string;
+  endYear?: string;
+  description?: string;
+}
+
+export interface Language {
+  name: string;
+  proficiency: 'beginner' | 'intermediate' | 'advanced' | 'fluent' | 'native';
 }
 
 export interface Company {

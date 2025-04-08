@@ -1,12 +1,68 @@
 
-import { Application, Company, HireRequest, JobSeeker, User } from "@/types/hiring";
+import { Application, Company, CV, Education, Experience, HireRequest, JobSeeker, Language, User } from "@/types/hiring";
+
+// CV data for the current user
+const userCV: CV = {
+  summary: "Experienced software engineer with a strong background in frontend development. Specializing in React, TypeScript, and modern JavaScript frameworks. Passionate about creating intuitive user interfaces and delivering high-quality code.",
+  skills: ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Node.js", "Git", "RESTful APIs", "GraphQL", "Jest", "CI/CD"],
+  experience: [
+    {
+      title: "Senior Frontend Developer",
+      company: "TechInnovate",
+      location: "San Francisco, CA",
+      startDate: "2022-01",
+      current: true,
+      description: "Lead frontend development for multiple web applications. Implemented design systems and component libraries using React and TypeScript. Improved application performance by 40% through code optimizations."
+    },
+    {
+      title: "Frontend Developer",
+      company: "WebSolutions",
+      location: "Austin, TX",
+      startDate: "2019-03",
+      endDate: "2021-12",
+      description: "Developed and maintained responsive web applications. Collaborated with UX designers to implement user interfaces. Worked with backend teams to integrate APIs and services."
+    },
+    {
+      title: "Junior Developer",
+      company: "StartupHub",
+      location: "Portland, OR",
+      startDate: "2017-06",
+      endDate: "2019-02",
+      description: "Assisted in the development of web applications. Fixed bugs and implemented new features. Participated in code reviews and testing."
+    }
+  ],
+  education: [
+    {
+      degree: "Bachelor of Science in Computer Science",
+      institution: "University of California",
+      location: "Berkeley, CA",
+      startYear: "2013",
+      endYear: "2017",
+      description: "Focus on Software Engineering and Human-Computer Interaction"
+    },
+    {
+      degree: "Web Development Bootcamp",
+      institution: "CodeCamp",
+      location: "San Francisco, CA",
+      startYear: "2017",
+      endYear: "2017",
+      description: "Intensive 12-week program focused on modern web development"
+    }
+  ],
+  languages: [
+    { name: "English", proficiency: "native" },
+    { name: "French", proficiency: "intermediate" },
+    { name: "Spanish", proficiency: "beginner" }
+  ]
+};
 
 export const currentUser: User = {
   id: "user-1",
   name: "Thomas Anderson",
   email: "tanderson@example.com",
   avatar: "https://i.pravatar.cc/150?u=user1",
-  role: "jobSeeker"
+  role: "jobSeeker",
+  cv: userCV
 };
 
 export const companies: Company[] = [

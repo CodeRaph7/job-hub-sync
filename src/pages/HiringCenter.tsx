@@ -7,6 +7,7 @@ import UserMenu from '@/components/UserMenu';
 import ProfileModal from '@/components/ProfileModal';
 import SettingsModal from '@/components/SettingsModal';
 import EmptyState from '@/components/EmptyState';
+import CVViewer from '@/components/CVViewer';
 
 // Job Seeker Components
 import JobSeekerHireRequestCard from '@/components/jobseeker/HireRequestCard';
@@ -17,7 +18,8 @@ import CompanyHireRequestCard from '@/components/company/HireRequestCard';
 import CompanyApplicationCard from '@/components/company/ApplicationCard';
 
 // Icons
-import { MessageSquare, Settings, User } from 'lucide-react';
+import { MessageSquare, Settings, User, FileText } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const HiringCenter: React.FC = () => {
   const { user } = useUser();
@@ -30,6 +32,7 @@ const HiringCenter: React.FC = () => {
   
   const [profileModalOpen, setProfileModalOpen] = useState(false);
   const [settingsModalOpen, setSettingsModalOpen] = useState(false);
+  const [cvViewerOpen, setCvViewerOpen] = useState(false);
   
   const isJobSeeker = user.role === 'jobSeeker';
   
@@ -151,8 +154,20 @@ const HiringCenter: React.FC = () => {
           <h2 className="text-xl font-semibold text-hiring-text">
             {isJobSeeker ? 'Job Seeker Dashboard' : 'Company Dashboard'}
           </h2>
-          <div className="bg-hiring-background text-hiring-text/70 text-sm px-3 py-1 rounded-full border border-hiring-border">
-            {isJobSeeker ? 'Job Seeker View' : 'Company View'}
+          <div className="flex items-center gap-3">
+            {isJobSeeker && (
+              <Button 
+                variant="outline" 
+                onClick={() => setCvViewerOpen(true)}
+                className="flex items-center gap-2"
+              >
+                <FileText className="h-4 w-4" />
+                View CV
+              </Button>
+            )}
+            <div className="bg-hiring-background text-hiring-text/70 text-sm px-3 py-1 rounded-full border border-hiring-border">
+              {isJobSeeker ? 'Job Seeker View' : 'Company View'}
+            </div>
           </div>
         </div>
         
@@ -168,6 +183,17 @@ const HiringCenter: React.FC = () => {
         open={settingsModalOpen} 
         onOpenChange={setSettingsModalOpen} 
       />
+      
+      {isJobSeeker && user.cv && (
+        <CVViewer
+          cv={user.cv}
+          name={user.name}
+          avatar={user.avatar}
+          email={user.email}
+          open={cvViewerOpen}
+          onOpenChange={setCvViewerOpen}
+        />
+      )}
     </div>
   );
 };
