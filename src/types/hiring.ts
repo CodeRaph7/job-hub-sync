@@ -84,4 +84,25 @@ export interface HireRequest {
   dateRequested: string;
   status: ApplicationStatus;
   notes?: string;
+  chatId?: string;
+}
+
+export interface ChatMessage {
+  id: string;
+  chatId: string;
+  senderId: string;
+  senderName: string;
+  senderAvatar?: string;
+  message: string;
+  timestamp: string;
+  read: boolean;
+}
+
+export interface Chat {
+  id: string;
+  hireRequestId: string;
+  jobSeekerId: string;
+  companyId: string;
+  messages: ChatMessage[];
+  lastMessageTimestamp: string;
 }
